@@ -12,12 +12,11 @@ let elImage3 = document.getElementById('random3');
 let imageIndexArray = [];
 
 // new Constructor for images
-let Image = function(name, filePath, clickYes, clickNo, totalClicks) {
+let Image = function(name, filePath, clicked, displayed) {
 	this.name = name ; 
     this.filePath = filePath ; 
-    this.clickYes = clickYes ;
-    this.clickNo = clickNo ; 
-    this.totalClicks = totalClicks ;
+    this.clicked = clicked ;
+    this.displayed = displayed ;
 }
 
 // instantiate new Images
@@ -57,31 +56,30 @@ let randomImages = function() {
 // if / else statement to determine no duplicate images
 	//if (imageIndexArray[0] != imageIndexArray[1] && imageIndexArray[0] != imageIndexArray[2] && imageIndexArray[1] != imageIndexArray[2]) 
 // if > yes: assign the src to the image
-    console.log(imageArray[imageIndexArray[0]].filePath)
-    console.log(imageArray[imageIndexArray[1]].filePath)
-    console.log(imageArray[imageIndexArray[2]].filePath)
+    console.log(imageArray[imageIndexArray[0]].displayed)
+    console.log(imageArray[imageIndexArray[1]].displayed)
+    console.log(imageArray[imageIndexArray[2]].displayed)
+   
     elImage1.src = imageArray[imageIndexArray[0]].filePath ;
+    imageArray[imageIndexArray[0]].displayed += 1 ;
+    console.log("imageArray[0].displayed: " + imageArray[imageIndexArray[0]].displayed)
+
     elImage2.src = imageArray[imageIndexArray[1]].filePath ;
+    imageArray[imageIndexArray[1]].displayed += 1 ;
+    console.log("imageArray[1].displayed: " + imageArray[imageIndexArray[1]].displayed)
+
     elImage3.src = imageArray[imageIndexArray[2]].filePath ;
+    imageArray[imageIndexArray[2]].displayed += 1 ;
+    console.log("imageArray[2].displayed: " + imageArray[imageIndexArray[2]].displayed)
+
 } ;
 
-// event handler #1 – count how many times an image has been displayed
-let imageDisplayCount = function(e){
-	for (i = 0; i < imageIndexArray.length; i++) 
-		imageIndexArray[i] += imageIndex.clickNo ;
-    }
-
-// event handler #2 – count how many times an image has been clicked
+// event handler – count how many times an image has been clicked
 let imageClick = function(e) {
-	imageIndex.clickYes += 1 ;
-	imageIndex.clickNo -= 1 ;
+    imageIndex.clicked += 1 ;
 }
 
 // attach Event Listeners to image tags
-elImage1.addEventListener('load', imageDisplayCount) ;
-elImage2.addEventListener('load', imageDisplayCount) ;
-elImage3.addEventListener('load', imageDisplayCount) ;
-
 elImage1.addEventListener('click', imageClick) ;
 elImage2.addEventListener('click', imageClick) ;
 elImage3.addEventListener('click', imageClick) ;
