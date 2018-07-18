@@ -1,8 +1,8 @@
 # BusMall Project
 Project No. 3 for Code Partners 201 class
-[Lecture 10: Milestone 1](https://github.com/CodePartnersMD/MD201-01/blob/master/weeks-5-6/lecture-10/sprint3-milestone1.md "Class 10: A/V, Practical Info, and Getting the Vote Tracker Started")
-[Lecture 11: Milestone 2](https://github.com/CodePartnersMD/MD201-01/blob/master/weeks-5-6/lecture-11/sprint3-milestone2.md "Class 11: Adding Charts to the Vote Tracker App")
-[Lecture 12: Milestone 3](https://github.com/CodePartnersMD/MD201-01/blob/master/weeks-5-6/lecture-12/sprint3-milestone3.md "Class 12: Local Storage and UI/UX Concepts")
+[Lecture 10: Milestone 1](https://github.com/CodePartnersMD/MD201-01/blob/master/weeks-5-6/lecture-10/sprint3-milestone1.md "Class 10: A/V, Practical Info, and Getting the Vote Tracker Started")</br>
+[Lecture 11: Milestone 2](https://github.com/CodePartnersMD/MD201-01/blob/master/weeks-5-6/lecture-11/sprint3-milestone2.md "Class 11: Adding Charts to the Vote Tracker App")</br>
+[Lecture 12: Milestone 3](https://github.com/CodePartnersMD/MD201-01/blob/master/weeks-5-6/lecture-12/sprint3-milestone3.md "Class 12: Local Storage and UI/UX Concepts")</br>
 
 ## Project Background and Problem Domain
 BusMall is conducting Focus Group Research on which products to feature in its catalogue. With help from Davis and Zach, I developed an app that displays three possible candidates at a time and requests the user to click on their favorite item.  This data (the amount of times an image is shown, as well as the number of times it is clicked) is stored until the end of the focus session, when that data is summarized and listed for the user.
