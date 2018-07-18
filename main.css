@@ -6,7 +6,7 @@ body {
 
 h1 { 
     font-family: 'Arial', Helvetica;
-    font-size: 72px;
+    font-size: 60px;
     text-shadow: 1px 1px 3px;
     color: rgb(255, 255, 255);
     background-color: rgb(4, 8, 245);
@@ -15,5 +15,10 @@ h1 {
     padding-bottom: 55.5px;
   }
 
+  h2 {
+    font-family: 'Arial', 'Helvetica';
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+  }
 
   
