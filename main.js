@@ -17,6 +17,9 @@ let Image = function(name, filePath, clicked, displayed) {
     this.filePath = filePath ; 
     this.clicked = clicked ;
     this.displayed = displayed ;
+    this.increment = function() {
+        this.clicked += 1 ;
+    }
 }
 
 // instantiate new Images
@@ -76,7 +79,8 @@ let randomImages = function() {
 
 // event handler – count how many times an image has been clicked
 let imageClick = function(e) {
-    imageIndex.clicked += 1 ;
+    imageArray.increment
+    console.log(imageArray[0].clicked)
 }
 
 // attach Event Listeners to image tags
