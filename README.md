@@ -83,6 +83,21 @@ let randomImages = function() {
 
 } ;
 ```
+
+This too, did not work.
+
+Finally, late after class about 10:15pm holed up with Patrice, i finally figured it out:
+
+```javascript
+while (x === y || x === z || y === z) {
+            x = Math.floor(Math.random() * imageArray.length)
+            y = Math.floor(Math.random() * imageArray.length)
+            z = Math.floor(Math.random() * imageArray.length)   
+    }
+```
+
+Admittedly, credit goes to Zach for suggesting i calculate the numbers independently; however, i am reallly pleased at this solution because i came to it by myself after much trial and error.
+
 ## Project Goals
 [note: please see 'Goals For This Lab' for MVP requirements](https://github.com/CodePartnersMD/MD201-01/blob/master/weeks-5-6/lecture-10/sprint3-milestone1.md#goals-for-this-lab)
 
