@@ -49,6 +49,9 @@ imageArray.push (image01, image02, image03, image04, image05, image06, image07, 
 
 // come up with three random numbers (create function to do it)
 let randomImages = function() {
+    x = 0
+    y = 0
+    z = 0
     
     while (x === y || x === z || y === z) {
             x = Math.floor(Math.random() * imageArray.length)
@@ -77,16 +80,19 @@ let randomImages = function() {
 let imageClick1 = function(e) {
     imageArray[x].clicked += 1
     console.log(imageArray[x].clicked)
+    randomImages() ;
 }
 
 let imageClick2 = function(e) {
     imageArray[y].clicked += 1 
     console.log(imageArray[y].clicked)
+    randomImages() ;
 }
 
 let imageClick3 = function(e) {
     imageArray[z].clicked += 1   
     console.log(imageArray[z].clicked)
+    randomImages() ;
 }
 
 // attach Event Listeners to image tags

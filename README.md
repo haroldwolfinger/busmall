@@ -98,6 +98,8 @@ while (x === y || x === z || y === z) {
 
 Admittedly, credit goes to Zach for suggesting i calculate the numbers independently; however, i am reallly pleased at this solution because i came to it by myself after much trial and error.
 
+It required just one adjustment, which was made the next day: after initially running, the pictures were not changing. I spotted the fact that the while loop wouldn't run after the first instance since the values were unique. Zach helped me realize that i could just reset the values x, y, and z back to 0 before the while loop and it would run. Thanks Zach!
+
 ## Project Goals
 [note: please see 'Goals For This Lab' for MVP requirements](https://github.com/CodePartnersMD/MD201-01/blob/master/weeks-5-6/lecture-10/sprint3-milestone1.md#goals-for-this-lab)
 
