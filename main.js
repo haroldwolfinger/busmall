@@ -74,15 +74,25 @@ let randomImages = function() {
 } ;
 
 // event handler – count how many times an image has been clicked
-let imageClick = function(e) {
-    imageArray[e].increment()   
-    console.log(imageArray.clicked)
+let imageClick1 = function(e) {
+    imageArray[x].clicked += 1
+    console.log(imageArray[x].clicked)
+}
+
+let imageClick2 = function(e) {
+    imageArray[y].clicked += 1 
+    console.log(imageArray[y].clicked)
+}
+
+let imageClick3 = function(e) {
+    imageArray[z].clicked += 1   
+    console.log(imageArray[z].clicked)
 }
 
 // attach Event Listeners to image tags
-elImage1.addEventListener('click', imageClick) ;
-elImage2.addEventListener('click', imageClick) ;
-elImage3.addEventListener('click', imageClick) ;
+elImage1.addEventListener('click', imageClick1) ;
+elImage2.addEventListener('click', imageClick2) ;
+elImage3.addEventListener('click', imageClick3) ;
 
 // call function
 randomImages() ;
