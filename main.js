@@ -71,13 +71,12 @@ let randomImages = function() {
     elImage3.src = imageArray[z].filePath ;
     imageArray[z].displayed += 1 ;
     console.log("image3 count: " + imageArray[z].displayed)
-
 } ;
 
 // event handler – count how many times an image has been clicked
 let imageClick = function(e) {
-    imageArray.increment
-    console.log(imageArray[0].clicked)
+    imageArray[e].increment()   
+    console.log(imageArray.clicked)
 }
 
 // attach Event Listeners to image tags
