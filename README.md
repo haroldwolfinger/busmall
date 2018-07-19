@@ -6,6 +6,7 @@
 </br>
 [**Project Background and Problem Domain**](https://github.com/haroldwolfinger/busmall/tree/busmall-start#project-background-and-problem-domain)</br>
 [**How the Project Evolved**](https://github.com/haroldwolfinger/busmall/tree/busmall-start#how-the-project-evolved)</br>
+[**What i learned**](https://github.com/haroldwolfinger/busmall/tree/busmall-start#what-i-learned)</br>
 [**Project Goals**](https://github.com/haroldwolfinger/busmall/tree/busmall-start#project-goals)</br>
 
 ## Project Background and Problem Domain
@@ -13,7 +14,8 @@ BusMall is conducting Focus Group Research on which products to feature in its c
 
 The project is built on JavaScript, and was scaffolded first before testing.  It showcases a constructor function that creates object instances for each potential product, as well as event handlers and event listeners.  
 
-## How the Project Evolved
+## How the Project Evolved</br>
+### Day 1: busmall-start branch</br>
 Initially, when I was planning the scaffolding of the main.js file, the project captured three things: the number of times it was clicked ("clickYes"), the number of times it was not clicked ("clickNo"), and the amount of times an image was shown (which i entered as "totalClicks"). I understood that with just two of these items, I could calculate the third, but I thought having the additional data would be useful. I also thought i would want to store the data, and wasn't sure how to calculate it inside the object. I admit my solution was convoluted. Davis suggested simplifying the code to just track displayed ("displayed") and clicked ("clicked").
 
 The initial code also featured some if else statements to ensure that during the testing that the same image is not duplicated (I had also imagined using if else statements to ensure that images shown in one click test are excluded from being repeated from the next turn). This was the code: 
@@ -99,6 +101,11 @@ while (x === y || x === z || y === z) {
 Admittedly, credit goes to Zach for suggesting i calculate the numbers independently; however, i am reallly pleased at this solution because i came to it by myself after much trial and error.
 
 It required just one adjustment, which was made the next day: after initially running, the pictures were not changing. I spotted the fact that the while loop wouldn't run after the first instance since the values were unique. Zach helped me realize that i could just reset the values x, y, and z back to 0 before the while loop and it would run. Thanks Zach!
+
+My final push to busmall-start occurred at 7:45pm on Thursday, July 19.  I'm ready to work on the next lecture, involving chartjs.
+
+## What i learned
+busmall-start: i learned how to map files to a filePath and display images stored in a folder. i also learned how to generate three unique random numbers (as opposed to one), and boned up on .innerHTML semantics to populate my list (rather than using replace.innerText). it felt good to reach the milestone on time, because initially i didn't think there was any way i could make it.
 
 ## Project Goals
 [note: please see 'Goals For This Lab' for MVP requirements](https://github.com/CodePartnersMD/MD201-01/blob/master/weeks-5-6/lecture-10/sprint3-milestone1.md#goals-for-this-lab)
