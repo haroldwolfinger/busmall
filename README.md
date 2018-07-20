@@ -104,8 +104,39 @@ It required just one adjustment, which was made the next day: after initially ru
 
 My final push to busmall-start occurred at 7:45pm on Thursday, July 19.  I'm ready to work on the next lecture, involving chartjs.
 
+### Day 2: chartjs branch</br>
+Wow, this was easy. I used the documentation at [chart js](http://www.chartjs.org/docs/latest/getting-started/) including [the options for the title](https://www.chartjs.org/docs/latest/configuration/title.html) and wound up creating my chart in less than an hour.
+
+The one issue i had was that even after thinking i had the formatting correct, the chart wouldn't display properly: i was getting the title and x axis-values, but i wasn't pulling in the data properly.  
+
+It turned out to be two problems: first, i did include a comma between my two data objects, i had brackets, which is wrong.  It is supposed to look like this: 
+
+```javascript
+data: {
+        labels: [image01.name, image02.name, image03.name, image04.name, image05.name, image06.name, image07.name, image08.name, image09.name, image10.name, image11.name, image12.name, image13.name, image14.name, image15.name, image16.name, image17.name, image18.name, image19.name, image20.name],
+        datasets: [{
+            label: "Times Clicked", 
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [image01.clicked, image02.clicked, image03.clicked, image04.clicked, image05.clicked, image06.clicked, image07.clicked, image08.clicked, image09.clicked, image10.clicked, image11.clicked, image12.clicked, image13.clicked, image14.clicked, image15.clicked, image16.clicked, image17.clicked, image18.clicked, image19.clicked, image20.clicked],
+        } ,
+            {
+            label: "Times Displayed",
+            backgroundColor: 'purple',
+            borderColor: 'purple',
+            data: [image01.displayed, image02.displayed, image03.displayed, image04.displayed, image05.displayed, image06.displayed, image07.displayed, image08.displayed, image09.displayed, image10.displayed, image11.displayed, image12.displayed, image13.displayed, image14.displayed, image15.displayed, image16.displayed, image17.displayed, image18.displayed, image19.displayed, image20.displayed],
+        }]
+    },
+```
+
+Secondly, the code was at the bottom of my JavaScript instead of within my displayResults function.
+
+I made the two changes and everything worked! Time for Milestone 3.
+
 ## What i learned
 busmall-start: i learned how to map files to a filePath and display images stored in a folder. i also learned how to generate three unique random numbers (as opposed to one), and boned up on .innerHTML semantics to populate my list (rather than using replace.innerText). it felt good to reach the milestone on time, because initially i didn't think there was any way i could make it.
+
+chartjs: i learned how to add a chart into my file using the <canvas> tag in html and dynamically populating it from JavaScript.
 
 ## Project Goals
 [note: please see 'Goals For This Lab' for MVP requirements](https://github.com/CodePartnersMD/MD201-01/blob/master/weeks-5-6/lecture-10/sprint3-milestone1.md#goals-for-this-lab)

@@ -90,6 +90,36 @@ let displayResults = function(){
         document.getElementById('product19').innerHTML = "Number of times " + image19.name + " clicked: " + image19.clicked + " out of " + image19.displayed + " times displayed";
 
         document.getElementById('product20').innerHTML = "Number of times " + image20.name + " clicked: " + image20.clicked + " out of " + image20.displayed + " times displayed";
+
+// create a chart within the canvas element
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [image01.name, image02.name, image03.name, image04.name, image05.name, image06.name, image07.name, image08.name, image09.name, image10.name, image11.name, image12.name, image13.name, image14.name, image15.name, image16.name, image17.name, image18.name, image19.name, image20.name],
+        datasets: [{
+            label: "Times Clicked", 
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [image01.clicked, image02.clicked, image03.clicked, image04.clicked, image05.clicked, image06.clicked, image07.clicked, image08.clicked, image09.clicked, image10.clicked, image11.clicked, image12.clicked, image13.clicked, image14.clicked, image15.clicked, image16.clicked, image17.clicked, image18.clicked, image19.clicked, image20.clicked],
+        } ,
+            {
+            label: "Times Displayed",
+            backgroundColor: 'purple',
+            borderColor: 'purple',
+            data: [image01.displayed, image02.displayed, image03.displayed, image04.displayed, image05.displayed, image06.displayed, image07.displayed, image08.displayed, image09.displayed, image10.displayed, image11.displayed, image12.displayed, image13.displayed, image14.displayed, image15.displayed, image16.displayed, image17.displayed, image18.displayed, image19.displayed, image20.displayed],
+        }]
+    },
+    options: {
+        display: true, 
+        fontSize: 18,
+        text: "Product Popularity: Number of Times Clicked + Number of Times Displayed",
+        fontStyle: 'bold',
+        fontFamily: "'monospace'",
+        fontColor: 'rgb(4, 8, 245)',
+    }
+})
+
 }}
 
 // come up with three random numbers (create function to do it)
