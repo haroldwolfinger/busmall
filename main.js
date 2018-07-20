@@ -2,6 +2,8 @@
 
 // declare empty array that will store image objects
 let imageArray = [];
+
+// declare global variables for the three random number and the counter
 let x 
 let y
 let z
