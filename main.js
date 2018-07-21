@@ -52,6 +52,7 @@ imageArray.push (image01, image02, image03, image04, image05, image06, image07, 
 
 // create function to display results after 25 clicks
 let displayResults = function(){
+// i would like to find a way to refactor this code into less lines - using jQuery perhaps? would that work?
     if (increment > 25) {
         document.getElementById('product01').innerHTML = "Number of times " + image01.name + " clicked: " + image01.clicked + " out of " + image01.displayed + " times displayed";
 
@@ -112,6 +113,7 @@ var chart = new Chart(ctx, {
             data: [image01.displayed, image02.displayed, image03.displayed, image04.displayed, image05.displayed, image06.displayed, image07.displayed, image08.displayed, image09.displayed, image10.displayed, image11.displayed, image12.displayed, image13.displayed, image14.displayed, image15.displayed, image16.displayed, image17.displayed, image18.displayed, image19.displayed, image20.displayed],
         }]
     },
+// wanted to add in options so a title would be displayed
     options: {
         display: true, 
         fontSize: 18,
@@ -125,6 +127,8 @@ var chart = new Chart(ctx, {
 }}
 
 // come up with three random numbers (create function to do it)
+// was having problems with this while loop initially because it would only run upon page load; then, nothing would happen. finally realized that values need to be set back equal each time to set the conditions so that the function will run.
+// the function alos tallies the number of times the images have been refreshed ("increment" variable)
 let randomImages = function() {
     x = 0
     y = 0
@@ -132,12 +136,14 @@ let randomImages = function() {
     increment += 1
     console.log("increment: " + increment)
 
+// proud of this while loop - it ensures that the three numbers are unique
     while (x === y || x === z || y === z) {
             x = Math.floor(Math.random() * imageArray.length)
             y = Math.floor(Math.random() * imageArray.length)
             z = Math.floor(Math.random() * imageArray.length)   
     }
 
+    // each image is populated to the page here and the ".displayed" property increase by 1 for later data showing
     elImage1.src = imageArray[x].filePath ;
     imageArray[x].displayed += 1 ;
     
@@ -147,11 +153,14 @@ let randomImages = function() {
     elImage3.src = imageArray[z].filePath ;
     imageArray[z].displayed += 1 ;
     
+    // see above for this function's code: this function displays a bar chart after images have been refreshed 25 times
     displayResults()
 
 } ;
 
 // event handler – count how many times an image has been clicked
+// (e) = event not error. the function occurs upon the event
+// the final function randomImages() tells the code to run the function that reloads the unique images
 let imageClick1 = function(e) {
     imageArray[x].clicked += 1
     console.log(imageArray[x].clicked)
@@ -171,6 +180,7 @@ let imageClick3 = function(e) {
 }
 
 // attach Event Listeners to image tags
+// see keyword 'click' - that's the event, and when that event occurs, the corresponding function above is called
     elImage1.addEventListener('click', imageClick1) ;
     elImage2.addEventListener('click', imageClick2) ;
     elImage3.addEventListener('click', imageClick3) ;
