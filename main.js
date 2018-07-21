@@ -14,6 +14,9 @@ let elImage1 = document.getElementById('random1');
 let elImage2 = document.getElementById('random2');
 let elImage3 = document.getElementById('random3');
 
+// find list id in HTML so we can dynamically populate the number of clicks + times displayed
+let myList = document.getElementById("productList")
+
 // new Constructor for images
 let Image = function(name, filePath) {
 	this.name = name ; 
@@ -54,45 +57,13 @@ imageArray.push (image01, image02, image03, image04, image05, image06, image07, 
 let displayResults = function(){
 // i would like to find a way to refactor this code into less lines - using jQuery perhaps? would that work?
     if (increment > 25) {
-        document.getElementById('product01').innerHTML = "Number of times " + image01.name + " clicked: " + image01.clicked + " out of " + image01.displayed + " times displayed";
-
-        document.getElementById('product02').innerHTML = "Number of times " + image02.name + " clicked: " + image02.clicked + " out of " + image02.displayed + " times displayed";
-    
-        document.getElementById('product03').innerHTML = "Number of times " + image03.name + " clicked: " + image03.clicked + " out of " + image03.displayed + " times displayed";
-
-        document.getElementById('product04').innerHTML = "Number of times " + image04.name + " clicked: " + image04.clicked + " out of " + image04.displayed + " times displayed";
-
-        document.getElementById('product05').innerHTML = "Number of times " + image05.name + " clicked: " + image05.clicked + " out of " + image05.displayed + " times displayed";
-
-        document.getElementById('product06').innerHTML = "Number of times " + image06.name + " clicked: " + image06.clicked + " out of " + image06.displayed + " times displayed";
-
-        document.getElementById('product07').innerHTML = "Number of times " + image07.name + " clicked: " + image07.clicked + " out of " + image07.displayed + " times displayed";
-
-        document.getElementById('product08').innerHTML = "Number of times " + image08.name + " clicked: " + image08.clicked + " out of " + image08.displayed + " times displayed";
-
-        document.getElementById('product09').innerHTML = "Number of times " + image09.name + " clicked: " + image09.clicked + " out of " + image09.displayed + " times displayed";
-
-        document.getElementById('product10').innerHTML = "Number of times " + image10.name + " clicked: " + image10.clicked + " out of " + image10.displayed + " times displayed";
-
-        document.getElementById('product11').innerHTML = "Number of times " + image11.name + " clicked: " + image11.clicked + " out of " + image11.displayed + " times displayed";
-
-        document.getElementById('product12').innerHTML = "Number of times " + image12.name + " clicked: " + image12.clicked + " out of " + image12.displayed + " times displayed";
-    
-        document.getElementById('product13').innerHTML = "Number of times " + image13.name + " clicked: " + image13.clicked + " out of " + image13.displayed + " times displayed";
-
-        document.getElementById('product14').innerHTML = "Number of times " + image14.name + " clicked: " + image14.clicked + " out of " + image14.displayed + " times displayed";
-
-        document.getElementById('product15').innerHTML = "Number of times " + image15.name + " clicked: " + image15.clicked + " out of " + image15.displayed + " times displayed";
-
-        document.getElementById('product16').innerHTML = "Number of times " + image16.name + " clicked: " + image16.clicked + " out of " + image16.displayed + " times displayed";
-
-        document.getElementById('product17').innerHTML = "Number of times " + image17.name + " clicked: " + image17.clicked + " out of " + image17.displayed + " times displayed";
-
-        document.getElementById('product18').innerHTML = "Number of times " + image18.name + " clicked: " + image18.clicked + " out of " + image18.displayed + " times displayed";
-
-        document.getElementById('product19').innerHTML = "Number of times " + image19.name + " clicked: " + image19.clicked + " out of " + image19.displayed + " times displayed";
-
-        document.getElementById('product20').innerHTML = "Number of times " + image20.name + " clicked: " + image20.clicked + " out of " + image20.displayed + " times displayed";
+        for (i = 0; i < 20; i++) {
+            let itemListing = document.createElement('li') 
+            itemListing.innerHTML = "Number of times " + imageArray[i].name + " clicked: " + imageArray[i].clicked + " out of " + imageArray[i].displayed + " times displayed";
+            myList.appendChild(itemListing)
+            console.log(myList)
+            console.log(itemListing)
+        }
 
 // create a chart within the canvas element
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -126,16 +97,25 @@ var chart = new Chart(ctx, {
 
 }}
 
+// create a function to count the the number of times the images refresh (linked to the click event and imageClick functions) - originally this was within the randomImages function, but i found a bug that would allow the increment counter to increase even if no picture was clicked (by refreshing the site): that bug has been fixed.
+let countTimes = function() {
+    if (localStorage.count) {
+        increment = parseInt(localStorage.getItem("count"))
+    }
+    increment += 1
+    localStorage.setItem("count", increment)
+    JSON.stringify("count")
+    console.log("increment: " + increment)
+}
+
 // come up with three random numbers (create function to do it)
 // was having problems with this while loop initially because it would only run upon page load; then, nothing would happen. finally realized that values need to be set back equal each time to set the conditions so that the function will run.
-// the function alos tallies the number of times the images have been refreshed ("increment" variable)
+
 let randomImages = function() {
     x = 0
     y = 0
     z = 0
-    increment += 1
-    console.log("increment: " + increment)
-
+    
 // proud of this while loop - it ensures that the three numbers are unique
     while (x === y || x === z || y === z) {
             x = Math.floor(Math.random() * imageArray.length)
@@ -162,21 +142,38 @@ let randomImages = function() {
 // (e) = event not error. the function occurs upon the event
 // the final function randomImages() tells the code to run the function that reloads the unique images
 let imageClick1 = function(e) {
-    imageArray[x].clicked += 1
-    console.log(imageArray[x].clicked)
-    randomImages() ;
+// create an if statement: if increment > 25 do not allow another vote
+    if (increment > 25) {
+        return ;
+// create else statement: if increment <= 25 allow click and repopulate random images
+    } else {
+        imageArray[x].clicked += 1
+        console.log(imageArray[x].clicked)
+        countTimes() ; 
+        randomImages() ;
+    }
 }
 
 let imageClick2 = function(e) {
-    imageArray[y].clicked += 1 
-    console.log(imageArray[y].clicked)
-    randomImages() ;
+    if (increment > 25) {
+        return ;
+    } else {
+        imageArray[y].clicked += 1 
+        console.log(imageArray[y].clicked)
+        countTimes() ; 
+        randomImages() ;
+    }
 }
 
 let imageClick3 = function(e) {
-    imageArray[z].clicked += 1   
-    console.log(imageArray[z].clicked)
-    randomImages() ;
+    if (increment > 25) {
+        return ;
+    } else {
+        imageArray[z].clicked += 1
+        console.log(imageArray[z].clicked)
+        countTimes() ; 
+        randomImages() ;
+    }
 }
 
 // attach Event Listeners to image tags
