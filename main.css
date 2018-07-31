@@ -1,0 +1,58 @@
+body {
+    font-family: Arial;
+    background-color: rgb(6, 163, 253);
+  }
+
+
+h1 { 
+    font-family: 'Arial', Helvetica;
+    font-size: 60px;
+    text-shadow: 1px 1px 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(4, 8, 245);
+    padding-top: 55.5px;
+    padding-left: 5px;
+    padding-bottom: 55.5px;
+  }
+
+  h2 {
+    font-family: 'Arial', 'Helvetica';
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+  }
+
+  h3 {
+    font-family: 'monospace';
+    font-size: 28px;
+    color: rgb(4, 8, 245);
+    background-color: rgb(255, 255, 255); 
+    text-decoration: underline;
+  }
+
+  #results {
+    margin-top: 40px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+  }
+
+  ol {
+    margin-left: 20px;
+  }
+
+  li {
+    font-family: monospace;
+    font-size: 24px;
+    color: rgb(6, 163, 253);
+    background-color: rgb(255, 255, 255); 
+  }
+
+  p {
+    font-family: monospace;
+    color: red;
+    font-size: 16px;
+  }
+  #thanks {
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+  }
