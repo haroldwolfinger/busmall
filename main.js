@@ -1,4 +1,4 @@
-// Scaffolding for the 1st milestone of Sprint 3 (BusMall)
+// Scaffolding for the 3rd milestone of Sprint 3 (BusMall) - using local storage to access data from before
 
 // declare empty array that will store image objects
 let imageArray = [];
@@ -97,7 +97,7 @@ var chart = new Chart(ctx, {
 
 }}
 
-// create a function to count the the number of times the images refresh (linked to the click event and imageClick functions) - originally this was within the randomImages function, but i found a bug that would allow the increment counter to increase even if no picture was clicked (by refreshing the site): that bug has been fixed.
+// create a function to count the number of times the images refresh (linked to the click event and imageClick functions) - originally this was within the randomImages function, but i found a bug that would allow the increment counter to increase even if no picture was clicked (by refreshing the site): that bug has been fixed.
 let countTimes = function() {
     if (localStorage.count) {
         increment = parseInt(localStorage.getItem("count"))
