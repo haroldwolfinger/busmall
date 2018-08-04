@@ -28,7 +28,12 @@ let Image = function(name, filePath) {
     }
 }
 
-// instantiate new Images
+// check to see if local storage exists, and if so, retrieve it
+if (localStorage.imgArr) {
+    imageArray = JSON.parse(localStorage.getItem("imgArr")) ;
+} else {
+
+    // instantiate new Images
 let image01 = new Image('bag', './img/bag.jpg') ; 
 let image02 = new Image('banana', './img/banana.jpg') ; 
 let image03 = new Image('bathroom', './img/bathroom.jpg') ;
@@ -53,6 +58,8 @@ let image20 = new Image('wine-glass', './img/wine-glass.jpg') ;
 // push images to imageArray
 imageArray.push (image01, image02, image03, image04, image05, image06, image07, image08, image09, image10, image11, image12, image13, image14, image15, image16, image17, image18, image19, image20) ;
 
+}
+
 // create function to display results after 25 clicks
 let displayResults = function(){
 // i would like to find a way to refactor this code into less lines - using jQuery perhaps? would that work?
@@ -64,24 +71,33 @@ let displayResults = function(){
             console.log(myList)
             console.log(itemListing)
         }
+ 
+//function that will dynamically populate chart with labels and data from imageArray
+function populateChart(props) {
+    let labels = []
+    for(let i=0; i < imageArray.length; i++) {
+        labels.push(imageArray[i][props])
+    }
+    return labels
+}
 
 // create a chart within the canvas element
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [image01.name, image02.name, image03.name, image04.name, image05.name, image06.name, image07.name, image08.name, image09.name, image10.name, image11.name, image12.name, image13.name, image14.name, image15.name, image16.name, image17.name, image18.name, image19.name, image20.name],
+        labels: populateChart('name'),
         datasets: [{
             label: "Times Clicked", 
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [image01.clicked, image02.clicked, image03.clicked, image04.clicked, image05.clicked, image06.clicked, image07.clicked, image08.clicked, image09.clicked, image10.clicked, image11.clicked, image12.clicked, image13.clicked, image14.clicked, image15.clicked, image16.clicked, image17.clicked, image18.clicked, image19.clicked, image20.clicked],
+            data: populateChart('clicked'),
         } ,
             {
             label: "Times Displayed",
             backgroundColor: 'purple',
             borderColor: 'purple',
-            data: [image01.displayed, image02.displayed, image03.displayed, image04.displayed, image05.displayed, image06.displayed, image07.displayed, image08.displayed, image09.displayed, image10.displayed, image11.displayed, image12.displayed, image13.displayed, image14.displayed, image15.displayed, image16.displayed, image17.displayed, image18.displayed, image19.displayed, image20.displayed],
+            data: populateChart('displayed'),
         }]
     },
 // wanted to add in options so a title would be displayed
@@ -151,6 +167,8 @@ let imageClick1 = function(e) {
         console.log(imageArray[x].clicked)
         countTimes() ; 
         randomImages() ;
+        localStorage.setItem("imgArr", JSON.stringify(imageArray)) ; 
+        console.log(localStorage) ;
     }
 }
 
@@ -162,6 +180,8 @@ let imageClick2 = function(e) {
         console.log(imageArray[y].clicked)
         countTimes() ; 
         randomImages() ;
+        localStorage.setItem("imgArr", JSON.stringify(imageArray)) ; 
+        console.log(localStorage) ;
     }
 }
 
@@ -173,6 +193,8 @@ let imageClick3 = function(e) {
         console.log(imageArray[z].clicked)
         countTimes() ; 
         randomImages() ;
+        localStorage.setItem("imgArr", JSON.stringify(imageArray)) ; 
+        console.log(localStorage) ;
     }
 }
 
